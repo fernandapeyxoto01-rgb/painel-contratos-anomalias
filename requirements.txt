@@ -1,6 +1,5 @@
-streamlit
-pandas
-plotly
-openai
-python-dotenv
-psycopg2-binary
+streamlit==1.33.0
+pandas==2.2.2
+plotly==5.20.0
+openai==1.30.0
+psycopg2-binary==2.9.9
