@@ -72,18 +72,26 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── DADOS (POSTGRES) ──────────────────────────────────────────
+import traceback
+
 def carregar_dados():
-    conn = psycopg2.connect(
-        f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}?sslmode=require"
-    )
+    try:
+        conn = psycopg2.connect(
+            f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}?sslmode=require"
+        )
 
-    query = "SELECT * FROM public.anomalias_contratos"
-    df = pd.read_sql(query, conn)
-    conn.close()
+        st.success("✅ Conectou no banco!")
 
-    return df
+        query = "SELECT 1"
+        df = pd.read_sql(query, conn)
+        conn.close()
 
-df = carregar_dados()
+        return df
+
+    except Exception as e:
+        st.error("ERRO REAL ↓")
+        st.code(traceback.format_exc())
+        return pd.DataFrame()
 
 # ── CONTEXTO IA ───────────────────────────────────────────────
 def gerar_contexto(df):
