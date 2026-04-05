@@ -72,19 +72,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ── DADOS (POSTGRES) ──────────────────────────────────────────
-@st.cache_data
 def carregar_dados():
     conn = psycopg2.connect(
-        host=DB_HOST,
-        database=DB_NAME,
-        user=DB_USER,
-        password=DB_PASSWORD,
-        port=DB_PORT,
-        sslmode="require"
+        f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}?sslmode=require"
     )
 
     query = "SELECT * FROM public.anomalias_contratos"
-
     df = pd.read_sql(query, conn)
     conn.close()
 
