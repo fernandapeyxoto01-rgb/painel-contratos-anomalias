@@ -92,6 +92,13 @@ def carregar_dados():
         st.error("ERRO REAL ↓")
         st.code(traceback.format_exc())
         return pd.DataFrame()
+    
+    # 👇 FORA da função
+df = carregar_dados()
+
+if df is None or df.empty:
+    st.warning("⚠️ Erro ao carregar dados ou banco vazio.")
+    st.stop()
 
 # ── CONTEXTO IA ───────────────────────────────────────────────
 def gerar_contexto(df):
