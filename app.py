@@ -82,7 +82,7 @@ def carregar_dados():
 
         st.success("✅ Conectou no banco!")
 
-        query = "SELECT 1"
+        query = "SELECT * FROM public.anomalias_contratos"
         df = pd.read_sql(query, conn)
         conn.close()
 
