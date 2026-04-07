@@ -276,6 +276,11 @@ with col_a:
 
     st.plotly_chart(fig1, use_container_width=True)
 
+# 🎨 CORES SUAVES
+VERDE = "#6FCF97"
+LARANJA = "#F2C94C"
+VERMELHO = "#EB5757"
+
 # 🎯 PIZZA RESTAURADO
 with col_b:
     st.subheader("🎯 Distribuição por Risco")
