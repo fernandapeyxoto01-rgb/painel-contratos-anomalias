@@ -240,6 +240,7 @@ fig.update_layout(
     coloraxis_showscale=False,
     margin=dict(l=20, r=20, t=20, b=20)
 )
+fig.update_xaxes(visible=False)
 
 st.plotly_chart(fig, use_container_width=True)
 
@@ -273,6 +274,7 @@ with col_a:
         coloraxis_showscale=False,
         margin=dict(l=20, r=20, t=20, b=20)
     )
+    fig1.update_xaxes(visible=False)
 
     st.plotly_chart(fig1, use_container_width=True)
 
