@@ -2,11 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import psycopg2
-from dotenv import load_dotenv
 from openai import OpenAI
-import os
-
-load_dotenv()
 
 # 🎨 Paleta CGE
 VERDE = "#2EA44F"
@@ -16,15 +12,15 @@ LARANJA = "#F25C05"
 VERMELHO = "#D62828"
 
 # 🔐 API
-api_key = os.getenv("OPENAI_API_KEY")
+api_key = st.secrets["OPENAI_API_KEY"]
 client = OpenAI(api_key=api_key)
 
 # 🔐 BANCO
-DB_HOST = os.getenv("DB_HOST")
-DB_NAME = os.getenv("DB_NAME")
-DB_USER = os.getenv("DB_USER")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
-DB_PORT = os.getenv("DB_PORT")
+DB_HOST = st.secrets["DB_HOST"]
+DB_NAME = st.secrets["DB_NAME"]
+DB_USER = st.secrets["DB_USER"]
+DB_PASSWORD = st.secrets["DB_PASSWORD"]
+DB_PORT = st.secrets["DB_PORT"]
 
 # ── CONFIG PÁGINA ─────────────────────────────────────────────
 st.set_page_config(
